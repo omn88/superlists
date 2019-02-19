@@ -1,9 +1,4 @@
-from django.http import HttpResponse
-from django.shortcuts import get_object_or_404, render
-from django.urls import reverse
-from django.views import generic
-from django.utils import timezone
-
+from django.shortcuts import render
 
 def home_page(request):
-	return HttpResponse('<html><title>To-Do lists</title></html>')
+	return render(request, 'lists/home.html')
