@@ -1,11 +1,11 @@
-from django.test import LiveServerTestCase
+from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 from selenium import webdriver
 from selenium.common.exceptions import WebDriverException
 from selenium.webdriver.common.keys import Keys
 import time
 
 MAX_WAIT = 10
-class NewVisitorTest(LiveServerTestCase):
+class NewVisitorTest(StaticLiveServerTestCase):
 
 
 	def setUp(self):
@@ -27,8 +27,10 @@ class NewVisitorTest(LiveServerTestCase):
 				if time.time() - start_time > MAX_WAIT:
 					raise e
 				time.sleep(0.5)
-			
-			
+	
+
+				
+
 	def test_can_start_a_list_for_one_user(self):
 		# Edith has heard about a cool new online to-do app. She goes
 		# to check out its homepage
@@ -139,8 +141,9 @@ class NewVisitorTest(LiveServerTestCase):
 
 
 		# Satisfied, they both go back to sleep
-		
-		
+
+
+
 	def test_layout_and_styling(self):
 		#Edith goes to the home page
 		
@@ -160,17 +163,7 @@ class NewVisitorTest(LiveServerTestCase):
 		inputbox = self.browser.find_element_by_id('id_new_item')
 		self.assertAlmostEqual(
 			inputbox.location['x'] + inputbox.size['width']/2, 512, delta=10
-		)
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+		)	
 		
 		
 		
