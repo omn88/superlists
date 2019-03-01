@@ -4,3 +4,4 @@ goatvenv
 __pycache__
 *.pyc
 /static
+.env
