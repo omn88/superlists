@@ -1,3 +1,19 @@
+
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 from django.test import TestCase
 from django.urls import resolve
 from django.http import HttpRequest
@@ -113,12 +129,8 @@ class NewItemTest(TestCase):
 		
 		self.assertRedirects(response, f'/lists/{correct_list.id}/')
 		
-	
-	
-	
 
-	
-	
+
 	
 	
 	
