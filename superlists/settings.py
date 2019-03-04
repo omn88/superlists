@@ -30,6 +30,10 @@ else:
 	ALLOWED_HOSTS = []"""
 DEBUG = True
 ALLOWED_HOSTS = ['*']
+SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
+
+
+
 
 # Application definition
 
