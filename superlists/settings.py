@@ -30,7 +30,7 @@ else:
 	ALLOWED_HOSTS = []"""
 DEBUG = True
 ALLOWED_HOSTS = ['*']
-SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
+SECRET_KEY = 'ufk)xk!=ya2o6!=x0zabpxpn3i))_7@v59@lx=*iach59co8$s'
 
 
 
