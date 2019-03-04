@@ -4,6 +4,11 @@ from fabric.api import cd, env, local, run
 
 REPO_URL = 'https://github.com/omn88/superlists.git'
 
+env.user = 'mikiwro'
+env.hosts = ['superlists-staging.dobririba.pl']
+env.password = '<mikiwro>'
+
+
 def deploy():
 	site_folder = f'/home/{env.user}/sites/{env.host}'
 	run(f'mkdir -p {site_folder}')
