@@ -4,9 +4,7 @@ from fabric.api import *
 
 REPO_URL = 'https://github.com/omn88.superlists.git'
 
-env.hosts= ['root@superlists-staging.dobririba.pl', 'mikiwro@superlists-staging.dobririba.pl']
-env.passwords = {'mikiwro@superlists-staging.dobririba.pl': 'mikiwro1'}
-env.key_filename = 'key.pem'
+
   
 
 def deploy():
