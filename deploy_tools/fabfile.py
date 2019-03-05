@@ -2,9 +2,9 @@ import random
 from fabric.contrib.files import append, exists
 from fabric.api import *
 
-REPO_URL = 'https://github.com/omn88.superlists.git'
+#REPO_URL = 'https://github.com/omn88.superlists.git'
 
-
+#env.use_ssh_config = True
   
 
 def deploy():
