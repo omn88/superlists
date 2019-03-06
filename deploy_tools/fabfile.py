@@ -19,7 +19,7 @@ ssh.util.log_to_file("C:/Users/Mikołaj/.ssh/paramiko.log", 10)
 
 ssh = paramiko.SSHClient()
 ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-ssh.connect("superlists-staging.dobririba.pl", username="mikiwro",allow_agent=False, look_for_keys=True, key_filename='C:/Users/Mikołaj/.ssh/id_rsa')
+ssh.connect("superlists-staging.dobririba.pl", username="mikiwro",allow_agent=True, look_for_keys=True, key_filename='C:/Users/Mikołaj/.ssh/id_rsa')
 
 
 
