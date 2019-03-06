@@ -11,20 +11,17 @@ logging.basicConfig(stream=sys.stderr, level=logging.DEBUG)
 env.use_ssh_config=False
 ssh.util.log_to_file("C:/Users/Mikołaj/.ssh/paramiko.log", 10)
 
-
-
+env.key_filename='C:/Users/Mikołaj/.ssh/id_rsa.pub'
+env.pkey='C:/Users/Mikołaj/.ssh/id_rsa'
+env.passphrase='dupa1234'
 #env.ssh_config_path = 'C:/Users/Mikołaj/.ssh/config.py'
-
+key_filename='C:/Users/Mikołaj/.ssh/id_rsa.pub'
 #REPO_URL = 'https://github.com/omn88.superlists.git'
 
 ssh = paramiko.SSHClient()
 ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-ssh.connect("superlists-staging.dobririba.pl", username="mikiwro",allow_agent=True, look_for_keys=True, key_filename='C:/Users/Mikołaj/.ssh/id_rsa')
+ssh.connect("superlists-staging.dobririba.pl", username="mikiwro")
 
-
-
-
-  
 
 def deploy():
     site_folder = f'/home/{env.user}/sites/{env.host}'  
