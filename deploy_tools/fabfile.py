@@ -15,17 +15,12 @@ ssh.util.log_to_file("C:/Users/Mikołaj/.ssh/paramiko.log", 10)
 
 #env.ssh_config_path = 'C:/Users/Mikołaj/.ssh/config.py'
 
-"""
-def staging():
-    env.hosts = ['superlists-staging.dobririba.pl']
-    env.user = 'mikiwro'
-    env.key_filename = '~/.ssh/id_rsa.pub'
-"""
 #REPO_URL = 'https://github.com/omn88.superlists.git'
 
 ssh = paramiko.SSHClient()
 ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-ssh.connect("superlists-staging.dobririba.pl", username="mikiwro",password="mikiwro",allow_agent=False, look_for_keys=False)
+ssh.connect("superlists-staging.dobririba.pl", username="mikiwro",allow_agent=False, look_for_keys=True, key_filename='C:/Users/Mikołaj/.ssh/id_rsa')
+
 
 
 
