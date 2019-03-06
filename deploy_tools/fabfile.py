@@ -1,10 +1,34 @@
 import random
 from fabric.contrib.files import append, exists
 from fabric.api import *
+from fabric.network import ssh
+import paramiko
+import sys
+import logging
+logging.basicConfig(stream=sys.stderr, level=logging.DEBUG)
 
+
+env.use_ssh_config=False
+ssh.util.log_to_file("C:/Users/Mikołaj/.ssh/paramiko.log", 10)
+
+
+
+#env.ssh_config_path = 'C:/Users/Mikołaj/.ssh/config.py'
+
+"""
+def staging():
+    env.hosts = ['superlists-staging.dobririba.pl']
+    env.user = 'mikiwro'
+    env.key_filename = '~/.ssh/id_rsa.pub'
+"""
 #REPO_URL = 'https://github.com/omn88.superlists.git'
 
-#env.use_ssh_config = True
+ssh = paramiko.SSHClient()
+ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+ssh.connect("superlists-staging.dobririba.pl", username="mikiwro",password="mikiwro",allow_agent=False, look_for_keys=False)
+
+
+
   
 
 def deploy():
