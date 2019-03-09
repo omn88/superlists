@@ -1,30 +1,34 @@
 import random
 from fabric.contrib.files import append, exists
-from fabric.api import *
+from fabric.api import cd, env, local, run
 from fabric.network import ssh
 import paramiko
-import sys
-import logging
-logging.basicConfig(stream=sys.stderr, level=logging.DEBUG)
+#import sys
+#import logging
+#logging.basicConfig(stream=sys.stderr, level=logging.DEBUG)
+
+REPO_URL = 'https://github.com/omn88/superlists.git'
 
 
-env.use_ssh_config=False
+#env.use_ssh_config=False
+#env.ssh_config_path = 'C:/Users/Mikołaj/.ssh/config'
+#env.host=['superlists-staging.dobririba.pl']
+#env.user='mikiwro'
+#ssh = paramiko.SSHClient()
+#ssh.load_system_host_keys()
+
+#ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+#ssh.connect('superlists-staging.dobririba.pl')
+#stdin, stdout, stderr =ssh.exec_command('ls -l')
 ssh.util.log_to_file("C:/Users/Mikołaj/.ssh/paramiko.log", 10)
 
-env.key_filename='C:/Users/Mikołaj/.ssh/id_rsa.pub'
-env.pkey='C:/Users/Mikołaj/.ssh/id_rsa'
-env.passphrase='dupa1234'
-#env.ssh_config_path = 'C:/Users/Mikołaj/.ssh/config.py'
-key_filename='C:/Users/Mikołaj/.ssh/id_rsa.pub'
-#REPO_URL = 'https://github.com/omn88.superlists.git'
+#connect_kwargs.key_filename='C:/Users/Mikołaj/.ssh/id_rsa.pub'
+#env.key_filename='C:/Users/Mikołaj/.ssh/id_rsa.pub'
 
-ssh = paramiko.SSHClient()
-ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-ssh.connect("superlists-staging.dobririba.pl", username="mikiwro")
-
+env.password="mikiwro"
 
 def deploy():
-    site_folder = f'/home/{env.user}/sites/{env.host}'  
+    site_folder = f'/home/{env.user}/sites/{env.host}' 
     run(f'mkdir -p {site_folder}')  
     with cd(site_folder):  
         _get_latest_source()
@@ -44,7 +48,7 @@ def _get_latest_source():
 def _update_virtualenv():
     if not exists('goatvenv/bin/pip'):  
         run(f'python3.6 -m venv goatvenv')
-    run('./virtualenv/bin/pip install -r requirements.txt')  
+    run('./goatvenv/bin/pip install -r requirements.txt')  
 	
 def _create_or_update_dotenv():
     append('.env', 'DJANGO_DEBUG_FALSE=y')  
